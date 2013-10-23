@@ -1,0 +1,18 @@
+#J_index .focus {
+  background-color: #fee16f;
+  padding: 20px 40px;
+  color: #000;
+  text-align: center;
+  font: 72px/72px -apple-system-font;
+  font-weight: 100;
+}
+#J_index .nav {
+  padding-left: 10px;
+  margin: 0;
+  font: 21px/50px -apple-system-font;
+  color: #000;
+}
+#J_index .nav li {
+  list-style: none;
+  background: repeat-x bottom left url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'><rect fill='#bebdb9' x='0' y='0' width='1' height='0.5'/></svg>");
+}

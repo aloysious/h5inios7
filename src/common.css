@@ -1,0 +1,39 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+#J_stage {
+  display: -webkit-box;
+  overflow: hidden;
+}
+#J_stage .g-view {
+  -webkit-box-flex: 1;
+  width: 100%;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+  display: none;
+}
+#J_stage .g-banner {
+  display: -webkit-box;
+  padding: 0 10px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  font: 17px/30px -apple-system-font;
+  color: #fff;
+  background: -webkit-linear-gradient(0deg, #e5467f, rgba(229, 70, 127, 0.91) 80%, #e5467f);
+}
+#J_stage .g-banner .g-left {
+  width: 50px;
+  text-align: left;
+}
+#J_stage .g-banner .g-right {
+  width: 50px;
+  text-align: right;
+}
+#J_stage .g-banner .g-mid {
+  box-flex: 1;
+  -webkit-box-flex: 1;
+  font-weight: bold;
+  text-align: center;
+}
