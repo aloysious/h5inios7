@@ -23,7 +23,41 @@ KISSY.add('mysite/page/today/index', function (S, Base, NODE, EVENT, View) {
 	S.extend(TodayView, View, {
 
 		init: function() {
+			var that = this;
 
+			setTimeout(function() {
+				that._saveDatesOriginalPos();
+			}, 0);
+
+			NODE.one(window).on('touchmove', function() {
+				that._fixDates();
+			});
+		},
+
+		_saveDatesOriginalPos: function() {
+			var dtList = this.con.all('dt');
+			S.each(dtList, function(ele) {
+				ele = NODE.one(ele);
+				ele.attr('data-top', ele.offset().top);
+			});
+		},
+
+		_fixDates: function() {
+			var dtList = this.con.all('dt');
+			S.each(dtList, function(ele) {
+				ele = NODE.one(ele);
+				if (ele.attr('data-top') <= NODE.one(window).scrollTop()) {
+					ele.css({
+						'position': 'fixed',
+						'top': 0,
+						'left': 0
+					});
+				} else {
+					ele.css({
+						'position': 'static'
+					});
+				}
+			});
 		},
 
 	});
