@@ -27,6 +27,8 @@ KISSY.add('mysite/page/index/index', function (S, Base, NODE, EVENT, View) {
 			this._initProfile();
 			this._bindToCareer();
 			this._initAlbumShortcut();
+			this._bindShowContact();
+			this._bindToToday();
 
 		},
 
@@ -91,55 +93,26 @@ KISSY.add('mysite/page/index/index', function (S, Base, NODE, EVENT, View) {
 			});
 		},
 
-			  /*
-		init: function() {
-			// your code here
-			this._initBlurDemo();
-			this._initSlideDemo();
-			this._initZoomDemo();
-			this._initAlbumDemo();
-		},
-
-		_initBlurDemo: function() {
-			var that = this;
-
-			EVENT.on('.show-blur', 'tap', function(e) {
-				NODE.one('#J_mask').show();
-				that.con.addClass('blur');
-				that._showToast('You tap ' + NODE.one(e.currentTarget).html());
-			});
-			EVENT.on('#J_mask', 'tap', function(e) {
-				NODE.one('#J_mask').hide();
-				that.con.removeClass('blur');
-				NODE.one('#J_toast').hide();
-			});
-		},
-		
-		_showToast: function(tip) {
-			NODE.one('#J_toast').one('.content').html(tip);
-			NODE.one('#J_toast').show();
-		},
-
-		_initSlideDemo: function() {
-			EVENT.on('.show-slide', 'tap', function(e) {
-				location.href = '#!event';
-			});
-		},
-		
-		_initZoomDemo: function() {
-			EVENT.on('.cube', 'tap', function(e) {
-				var ele = NODE.one(e.currentTarget),
-					position = (ele.offset().left + ele.width()/2) + '_' + (ele.offset().top + ele.height()/2);
-				location.href = '#!zoom/' + position;
+		_bindToToday: function() {
+			EVENT.on('.show-today', 'tap', function(e) {
+				location.href = '#!today';
 			});
 		},
 
-		_initAlbumDemo: function() {
-			var data = [
-				{}	
-			];
+		_bindShowContact: function() {
+			EVENT.on('.show-contact', 'tap', function(e) {
+				console.log('asd');
+				var ele = NODE.one(e.currentTarget);
+				ele.css({
+					'-webkit-transition': '-webkit-transform 500ms ease'
+				});
+				setTimeout(function() {
+					ele.css({
+						'-webkit-transform': 'rotateX(180deg)'
+					});
+				}, 10);
+			});
 		}
-		*/
 
 	});
 

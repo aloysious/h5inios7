@@ -78,6 +78,7 @@
 		<!--#include virtual="./page/career/index.html" -->
 		<!--#include virtual="./page/album/index.html" -->
 		<!--#include virtual="./page/carousel/index.html" -->
+		<!--#include virtual="./page/today/index.html" -->
 	</div>
 <!--
 		<div id="J_main" class="view">

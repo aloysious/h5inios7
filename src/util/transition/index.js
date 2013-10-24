@@ -31,7 +31,7 @@ KISSY.add('mysite/util/transition/index', function (S, Base, NODE) {
 			}, 10);
 
 			if (!isToLeft) {
-				this._darken(from, 0.7, duration, easeFn);
+				this._darken(from, 1, duration, easeFn);
 			} else {
 				this._brighten(to, 1, duration, easeFn);
 			}

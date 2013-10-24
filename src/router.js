@@ -8,7 +8,8 @@ KISSY.add('mysite/router', function (
 			IndexView,
 			CareerView,
 			AlbumView,
-			CarouselView
+			CarouselView,
+			TodayView
 	) {
 
 	"use strict";
@@ -20,6 +21,7 @@ KISSY.add('mysite/router', function (
 			this.careerEle = '#J_career';
 			this.albumEle = '#J_album';
 			this.carouselEle = '#J_carousel';
+			this.todayEle = '#J_today';
 			this.currEle = null;
 			this.isFirstLoad = true;
 		},
@@ -28,7 +30,8 @@ KISSY.add('mysite/router', function (
 			'': '_index',
 			'!career': '_career',
 			'!album/:position': '_album',
-			'!carousel/:param': '_carousel'
+			'!carousel/:param': '_carousel',
+			'!today': '_today'
 		},
 		
 		_deploy: function(first) {
@@ -47,10 +50,12 @@ KISSY.add('mysite/router', function (
 			if (this.isFirstLoad) {
 				this._deploy(this.indexEle, this.careerEle);
 			} else if (this.currEle === this.careerEle) {
-				//Transition.slide(this.stageEle, this.currEle, this.indexEle, -1, 650, 'cubic-bezier(0.23,1,0.32,1)');
-				Transition.cover(this.currEle, this.indexEle, true, 50, 650, 'cubic-bezier(0.23,1,0.32,1)');
+				Transition.slide(this.stageEle, this.currEle, this.indexEle, -1, 650, 'cubic-bezier(0.23,1,0.32,1)');
+				//Transition.cover(this.currEle, this.indexEle, true, 50, 650, 'cubic-bezier(0.23,1,0.32,1)');
 			} else if (this.currEle === this.albumEle) {
 				Transition.zoom(this.currEle, this.indexEle, false, this.toAlbumOrigin, 400, 'cubic-bezier(0.23,1,0.32,1)');
+			} else if (this.currEle === this.todayEle) {
+				Transition.cover(this.currEle, this.indexEle, true, 50, 650, 'cubic-bezier(0.23,1,0.32,1)');
 			}
 			this.currEle = this.indexEle;
 		},
@@ -61,8 +66,8 @@ KISSY.add('mysite/router', function (
 			if (this.isFirstLoad) {
 				this._deploy(this.careerEle, this.indexEle);
 			} else {
-				//Transition.slide(this.stageEle, this.indexEle, this.careerEle, 1, 650, 'cubic-bezier(0.23,1,0.32,1)');
-				Transition.cover(this.indexEle, this.careerEle, false, 50, 650, 'cubic-bezier(0.23,1,0.32,1)');
+				Transition.slide(this.stageEle, this.indexEle, this.careerEle, 1, 650, 'cubic-bezier(0.23,1,0.32,1)');
+				//Transition.cover(this.indexEle, this.careerEle, false, 50, 650, 'cubic-bezier(0.23,1,0.32,1)');
 			}
 			this.currEle = this.careerEle;
 		},
@@ -107,6 +112,17 @@ KISSY.add('mysite/router', function (
 			}
 			this.currEle = this.carouselEle;
 		},
+		
+		_today: function() {
+			this.todayView = this.todayView || new TodayView(this.todayEle);
+
+			if (this.isFirstLoad) {
+				this._deploy(this.todayEle, this.indexEle);
+			} else {
+				Transition.cover(this.indexEle, this.todayEle, false, 50, 650, 'cubic-bezier(0.23,1,0.32,1)');
+			}
+			this.currEle = this.todayEle;
+		},
 
 		start : function(){
 			Backbone.history.start();
@@ -125,6 +141,7 @@ KISSY.add('mysite/router', function (
 		'mysite/page/index/index',
 		'mysite/page/career/index',
 		'mysite/page/album/index',
-		'mysite/page/carousel/index'
+		'mysite/page/carousel/index',
+		'mysite/page/today/index'
 	]
 });
