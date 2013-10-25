@@ -50,8 +50,9 @@ KISSY.add('mysite/router', function (
 			if (this.isFirstLoad) {
 				this._deploy(this.indexEle, this.careerEle);
 			} else if (this.currEle === this.careerEle) {
-				Transition.carousel(this.indexEle, this.currEle, false, 650, 'cubic-bezier(0.23,1,0.32,1)');
+				//Transition.carousel(this.indexEle, this.currEle, false, 650, 'cubic-bezier(0.23,1,0.32,1)');
 				//Transition.cover(this.currEle, this.indexEle, true, 50, 650, 'cubic-bezier(0.23,1,0.32,1)');
+				Transition.rotate(this.currEle, this.indexEle, 650, 'cubic-bezier(0.23,1,0.32,1)');
 			} else if (this.currEle === this.albumEle) {
 				Transition.zoom(this.currEle, this.indexEle, false, this.toAlbumOrigin, 400, 'cubic-bezier(0.23,1,0.32,1)');
 			} else if (this.currEle === this.todayEle) {

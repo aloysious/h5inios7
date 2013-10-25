@@ -257,10 +257,15 @@ KISSY.add(function (S, NODE, Base) {
 				'-webkit-perspective': 1000
 			});
 			to.css({
-				'-webkit-transform': 'translate3d(-50%,0,0) rotateY(180deg)'
+				'position': 'absolute',
+				'top': 0,
+				'left': 0,
+				'-webkit-transform': 'rotateY(-180deg)',
+				'-webkit-backface-visibility': 'hidden'
 			});
 			from.css({
-				'-webkit-transform': 'rotateY(0deg)'
+				'-webkit-transform': 'rotateY(0deg)',
+				'-webkit-backface-visibility': 'hidden'
 			});
 
 			setTimeout(function() {
@@ -273,6 +278,20 @@ KISSY.add(function (S, NODE, Base) {
 					'-webkit-transform': 'rotateY(180deg)'
 				});
 			}, 10);
+
+			setTimeout(function() {
+				to.css({
+					'position': 'relative',
+					'-webkit-transition': '',
+					'-webkit-transform': ''
+				});
+				from.css({
+					'position': 'relative',
+					'-webkit-transition': '',
+					'-webkit-transform': ''
+				});
+				from.hide();
+			}, duration + 100);
 		}
 
 	};
