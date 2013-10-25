@@ -50,12 +50,12 @@ KISSY.add('mysite/router', function (
 			if (this.isFirstLoad) {
 				this._deploy(this.indexEle, this.careerEle);
 			} else if (this.currEle === this.careerEle) {
-				Transition.slide(this.stageEle, this.currEle, this.indexEle, -1, 650, 'cubic-bezier(0.23,1,0.32,1)');
+				Transition.carousel(this.indexEle, this.currEle, false, 650, 'cubic-bezier(0.23,1,0.32,1)');
 				//Transition.cover(this.currEle, this.indexEle, true, 50, 650, 'cubic-bezier(0.23,1,0.32,1)');
 			} else if (this.currEle === this.albumEle) {
 				Transition.zoom(this.currEle, this.indexEle, false, this.toAlbumOrigin, 400, 'cubic-bezier(0.23,1,0.32,1)');
 			} else if (this.currEle === this.todayEle) {
-				Transition.cover(this.currEle, this.indexEle, true, 50, 650, 'cubic-bezier(0.23,1,0.32,1)');
+				Transition.cover(this.indexEle, this.currEle, false, 650, 'cubic-bezier(0.23,1,0.32,1)');
 			}
 			this.currEle = this.indexEle;
 		},
@@ -66,8 +66,9 @@ KISSY.add('mysite/router', function (
 			if (this.isFirstLoad) {
 				this._deploy(this.careerEle, this.indexEle);
 			} else {
-				Transition.slide(this.stageEle, this.indexEle, this.careerEle, 1, 650, 'cubic-bezier(0.23,1,0.32,1)');
+				//Transition.carousel(this.indexEle, this.careerEle, true, 650, 'cubic-bezier(0.23,1,0.32,1)');
 				//Transition.cover(this.indexEle, this.careerEle, false, 50, 650, 'cubic-bezier(0.23,1,0.32,1)');
+				Transition.rotate(this.indexEle, this.careerEle, 650, 'cubic-bezier(0.23,1,0.32,1)');
 			}
 			this.currEle = this.careerEle;
 		},
@@ -119,7 +120,7 @@ KISSY.add('mysite/router', function (
 			if (this.isFirstLoad) {
 				this._deploy(this.todayEle, this.indexEle);
 			} else {
-				Transition.cover(this.indexEle, this.todayEle, false, 50, 650, 'cubic-bezier(0.23,1,0.32,1)');
+				Transition.cover(this.indexEle, this.todayEle, true, 650, 'cubic-bezier(0.23,1,0.32,1)');
 			}
 			this.currEle = this.todayEle;
 		},
@@ -137,7 +138,7 @@ KISSY.add('mysite/router', function (
 		'node', 
 		'anim',
 		'mysite/lib/backbone/1.1/backbone',
-		'mysite/util/transition/index',
+		'mysite/util/pagetransition/1.0/index',
 		'mysite/page/index/index',
 		'mysite/page/career/index',
 		'mysite/page/album/index',

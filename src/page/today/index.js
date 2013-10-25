@@ -29,9 +29,9 @@ KISSY.add('mysite/page/today/index', function (S, Base, NODE, EVENT, View) {
 				that._saveDatesOriginalPos();
 			}, 0);
 
-			NODE.one(window).on('touchmove', function() {
-				that._fixDates();
-			});
+			//NODE.one(window).on('touchmove', function() {
+			//	that._fixDates();
+			//});
 		},
 
 		_saveDatesOriginalPos: function() {
@@ -52,10 +52,12 @@ KISSY.add('mysite/page/today/index', function (S, Base, NODE, EVENT, View) {
 						'top': 0,
 						'left': 0
 					});
+					ele.siblings('.dt-replace').show();
 				} else {
 					ele.css({
 						'position': 'static'
 					});
+					ele.siblings('.dt-replace').hide();
 				}
 			});
 		},

@@ -12,6 +12,9 @@
 			font: 21px/30px -apple-system-font;
 			text-align: center;
 			width: 100%;
+			position: -webkit-sticky;
+			position: sticky;
+			top: 30px;
 		}
 
 		dd {
@@ -20,9 +23,17 @@
 			background: repeat-x bottom left
 			  url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'><rect fill='#bebdb9' x='0' y='0' width='1' height='0.5'/></svg>");
 			
-			.clear-border {
-				background: none;
-			}
+		}
+		
+		.clear-border {
+			background: none;
+		}
+
+		.dt-replace {
+			margin: 0;
+			height: 30px;
+			background: none;
+			display: none;
 		}
 	}	
 }
