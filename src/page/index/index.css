@@ -11,8 +11,43 @@
   margin: 0;
   font: 21px/50px -apple-system-font;
   color: #000;
+  -webkit-perspective: 1000;
 }
 #J_index .nav li {
   list-style: none;
   background: repeat-x bottom left url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'><rect fill='#bebdb9' x='0' y='0' width='1' height='0.5'/></svg>");
+}
+#J_index .show-album .txt {
+  display: inline-block;
+  float: left;
+}
+#J_index .show-album .album-shortcut {
+  width: 72px;
+  float: right;
+}
+#J_index .show-album .album-shortcut .shortcut-item {
+  float: left;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}
+#J_index .show-album .album-shortcut .shortcut-item img {
+  display: block;
+}
+#J_profile {
+  height: 300px;
+  width: 200px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  font: 17px/30px -apple-system-font;
+  color: #000;
+  text-align: center;
+  display: none;
+}
+#J_profile span {
+  color: #f349a5;
 }

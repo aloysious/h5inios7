@@ -149,6 +149,26 @@ KISSY.add(function (S, NODE, Base) {
 		},
 
 		/**
+		 * @brief 元素的一个缩小放大周期
+		 * @param left         {selector} 舞台左边的page
+		 */
+		_scaleUpDown: function(ele, duration, easeFn) {
+			ele = NODE.one(ele);
+
+			ele.css({
+				'-webkit-animation': 'scaleUpDown ' + duration + 'ms ' + easeFn,
+				'-webkit-transform-origin': '50% 0'
+			});
+
+			setTimeout(function() {
+				ele.css({
+					'-webkit-animation': '',
+					'-webkit-transform-origin': ''
+				});
+			}, duration + 100);
+		},
+
+		/**
 		 * @brief 走马灯过场动画
 		 * @param left         {selector} 舞台左边的page
 		 * @param right        {selector} 舞台右边的page
@@ -181,7 +201,7 @@ KISSY.add(function (S, NODE, Base) {
 		 * @param duration      {Number}   过场持续时间，单位ms
 		 * @param easeFn        {String}   动画时间函数，与css3的transition easing一致
 		 */
-		zoom: function(from, to, isToExpansion, origin, duration, easeFn) {
+		popup: function(from, to, isToExpansion, origin, duration, easeFn) {
 			var tmp = to;
 			
 			this._polishPage(from);
@@ -251,6 +271,9 @@ KISSY.add(function (S, NODE, Base) {
 			to = NODE.one(to);
 			parent = from.parent();
 
+			this._polishPage(from);
+			this._polishPage(to);
+
 			to.show();
 
 			parent.css({
@@ -292,6 +315,90 @@ KISSY.add(function (S, NODE, Base) {
 				});
 				from.hide();
 			}, duration + 100);
+		},
+
+		scaleSwitch: function(left, right, isToRight, duration, easeFn) {
+			left = NODE.one(left);
+			right = NODE.one(right);
+
+			this._polishPage(left);
+			this._polishPage(right);
+
+			right.css({
+				'position': 'absolute',
+				'top': 0,
+				'left': (!isToRight? 0: '110%')
+			});
+
+			var leftAnim = '@-webkit-keyframes leftAnim {' +
+								'0% {-webkit-transform: scale(1,1) translate3d(' + (!isToRight? '-110%': 0) + ',0,0);}' +
+								'30% {-webkit-transform: scale(0.85,0.85) translate3d(' + (!isToRight? '-110%': 0) + ',0,0);}' +
+								'100% {-webkit-transform: scale(1,1) translate3d(' + (!isToRight? 0: '-110%') + ',0,0);}' +
+							'}',
+				rightAnim = '@-webkit-keyframes rightAnim {' +
+								'0% {-webkit-transform: scale(1,1) translate3d(0,0,0);}' +
+								'30% {-webkit-transform: scale(0.85,0.85) translate3d(0,0,0);}' +
+								'100% {-webkit-transform: scale(1,1) translate3d(' + (!isToRight? '': '-') + '110%,0,0);}' +
+							'}';
+
+			if (document.styleSheets && document.styleSheets.length) {
+				this._deleteStyleRule('leftAnim');
+				this._deleteStyleRule('rightAnim');
+				document.styleSheets[0].insertRule(leftAnim);
+				document.styleSheets[0].insertRule(rightAnim);
+			
+			} else {
+				var styleTag = document.createElement('style');
+				styleTag.innerHTML = leftAnim + rightAnim;
+				document.getElementByTagName('head')[0].appendChild(styleTag);
+			}
+
+			if (isToRight) {
+				right.show();
+			} else {
+				left.show();
+			}
+
+			right.css({
+				'-webkit-animation': 'rightAnim ' + duration + 'ms ' + easeFn,
+				'-webkit-transform-origin': '50% 100px'
+			});
+			left.css({
+				'-webkit-animation': 'leftAnim ' + duration + 'ms ' + easeFn,
+				'-webkit-transform-origin': (!isToRight? '-50%': '50%') + ' 100px'
+			});
+
+			setTimeout(function() {
+				
+				if (isToRight) {
+					left.hide();
+				} else {
+					right.hide();
+				}
+				
+				right.css({
+					'position': 'relative',
+					'left': 0,
+					'-webkit-animation': '',
+					'-webkit-transform-origin': ''
+				});
+				left.css({
+					'-webkit-animation': '',
+					'-webkit-transform-origin': ''
+				});
+
+			}, duration);
+			
+		},
+
+		_deleteStyleRule: function(ruleName) {
+			var rules = document.styleSheets[0].rules;
+			S.each(rules, function(rule, index) {
+				if (rule.name === ruleName) {
+					document.styleSheets[0].deleteRule(index);
+					return false;
+				}
+			});
 		}
 
 	};

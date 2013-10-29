@@ -26,9 +26,10 @@ KISSY.add('mysite/page/index/index', function (S, Base, NODE, EVENT, View) {
 			this.globalData = window.globalData;
 			this._initProfile();
 			this._bindToCareer();
+			this._bindToCompany();
 			this._initAlbumShortcut();
-			this._bindShowContact();
 			this._bindToToday();
+			this._bindToContact();
 
 		},
 
@@ -66,6 +67,12 @@ KISSY.add('mysite/page/index/index', function (S, Base, NODE, EVENT, View) {
 				location.href = '#!career';
 			});
 		},
+		
+		_bindToCompany: function() {
+			EVENT.on('.show-company', 'tap', function(e) {
+				location.href = '#!company';
+			});
+		},
 
 		_initAlbumShortcut: function() {
 			this._renderAlbumShortcut();
@@ -98,19 +105,10 @@ KISSY.add('mysite/page/index/index', function (S, Base, NODE, EVENT, View) {
 				location.href = '#!today';
 			});
 		},
-
-		_bindShowContact: function() {
+		
+		_bindToContact: function() {
 			EVENT.on('.show-contact', 'tap', function(e) {
-				console.log('asd');
-				var ele = NODE.one(e.currentTarget);
-				ele.css({
-					'-webkit-transition': '-webkit-transform 500ms ease'
-				});
-				setTimeout(function() {
-					ele.css({
-						'-webkit-transform': 'rotateX(180deg)'
-					});
-				}, 10);
+				location.href = '#!contact';
 			});
 		}
 

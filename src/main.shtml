@@ -76,52 +76,12 @@
 	<div id="J_stage">
 		<!--#include virtual="./page/index/index.html" -->
 		<!--#include virtual="./page/career/index.html" -->
+		<!--#include virtual="./page/company/index.html" -->
 		<!--#include virtual="./page/album/index.html" -->
 		<!--#include virtual="./page/carousel/index.html" -->
 		<!--#include virtual="./page/today/index.html" -->
+		<!--#include virtual="./page/contact/index.html" -->
 	</div>
-<!--
-		<div id="J_main" class="view">
-			<div id="J_head">
-				<div class="left">Settings</div>
-				<div class="mid">Timer</div>
-				<div class="right">Log</div>
-			</div>
-			<div id="J_content">
-				<div class="timer">0<span>:</span>00<span>:</span>03</div>
-				<div class="event">Article Writing Course</div>
-			</div>
-			<ul id="J_list">
-				<li class="show-blur">Blur me!</li>
-				<li class="show-slide">Slide to next view!</li>
-				<li class="show-zoom">Zoom to next view!<div class="cube">tap to zoom</div></li>
-				<li class="show-album"></li>
-				<li>7.0</li>
-				<li>7.0</li>
-				<li>7.0</li>
-				<li>7.0</li>
-				<li>7.0</li>
-				<li>7.0</li>
-				<li>7.0</li>
-			</ul>
-			<div class="slide-mask"></div>
-		</div>
-		<div id="J_mask"></div>
-		<div id="J_toast">
-			<div class="title">Wow, what a IOS7.0 demo!</div>
-			<div class="content"></div>
-		</div>
-		<div id="J_event" class="view">
-			I am container 2!
-			<div class="slide-mask"></div>
-		</div>
-		<div id="J_zoom" class="view">
-			I am zoom view!
-		</div>
-		<div id="J_albumGroup" class="view"></div>
-		<div id="J_albumSlide" class="view"></div>
-	</div>
-	-->
 	<script>
 		KISSY.use('mysite/router', function(S, Router) {
 			this.router = new Router();

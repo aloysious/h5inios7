@@ -1,1 +1,30 @@
-/* Your Css Code here*/
+#J_today {
+  background-color: #fff;
+}
+#J_today .content {
+  color: #000;
+  font: 18px/24px -apple-system-font;
+}
+#J_today .content dt {
+  background-color: #fee16f;
+  font: 21px/30px -apple-system-font;
+  text-align: center;
+  width: 100%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 30px;
+}
+#J_today .content dd {
+  margin-left: 10px;
+  font: 21px/50px -apple-system-font;
+  background: repeat-x bottom left url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1' height='1'><rect fill='#bebdb9' x='0' y='0' width='1' height='0.5'/></svg>");
+}
+#J_today .content .clear-border {
+  background: none;
+}
+#J_today .content .dt-replace {
+  margin: 0;
+  height: 30px;
+  background: none;
+  display: none;
+}

@@ -1,1 +1,11 @@
-/* Your Css Code here*/
+#J_carousel .content {
+  color: #000;
+  font: 18px/24px -apple-system-font;
+  display: -webkit-box;
+}
+#J_carousel .content .curr-wrapper {
+  -webkit-box-flex: 1;
+}
+#J_carousel .content .curr-wrapper img {
+  width: 100%;
+}
